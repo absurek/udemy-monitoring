@@ -1,0 +1,27 @@
+services:
+  grafana:
+    image: grafana/grafana
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./grafana/provisioning:/etc/grafana/provisioning
+    depends_on:
+      - prometheus
+
+  prometheus:
+    image: prom/prometheus
+    ports:
+      - "9090:9090"
+    volumes:
+      - ./prometheus.yaml:/etc/prometheus/prometheus.yml
+    depends_on:
+      - node
+
+  node:
+    image: node:22-alpine
+    working_dir: /app
+    volumes:
+      - ..:/app
+    command: node index.js
+    ports:
+      - "6543:6543"
