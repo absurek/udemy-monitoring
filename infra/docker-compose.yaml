@@ -25,3 +25,10 @@ services:
     command: node index.js
     ports:
       - "6543:6543"
+
+  node-exporter:
+    image: prom/node-exporter
+    ports:
+      - "9100:9100"
+    depends_on:
+      - prometheus
