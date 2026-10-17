@@ -4,6 +4,8 @@
   "description": "- Course on Udemy: https://www.udemy.com/course/hands-on-introduction-to-monitoring-with-prometheusgrafana",
   "main": "index.js",
   "scripts": {
+    "start": "docker compose -f infra/docker-compose.yaml up -d",
+    "stop": "docker compose -f infra/docker-compose.yaml down",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {

@@ -70,4 +70,9 @@ app.get('/api/products', (_req, res) => {
   }, Math.random() * 1000)
 })
 
+app.post('/webhook/alert', express.json(), (req, res) => {
+  console.log('Alert recieved', JSON.stringify(req.body, null, 2))
+  res.status(200).json({ status: 'recieved' })
+})
+
 app.listen(PORT, () => console.log('app is listening on port:', PORT))
